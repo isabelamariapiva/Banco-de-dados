@@ -1,0 +1,172 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Tempo de geração: 17/09/2025 às 14:06
+-- Versão do servidor: 10.4.32-MariaDB
+-- Versão do PHP: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Banco de dados: `locadora`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `carro`
+--
+
+CREATE TABLE `carro` (
+  `id_carro` int(11) NOT NULL,
+  `modelo` varchar(20) DEFAULT NULL,
+  `placa` varchar(11) DEFAULT NULL,
+  `ano` varchar(4) DEFAULT NULL,
+  `cor` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `carro`
+--
+
+INSERT INTO `carro` (`id_carro`, `modelo`, `placa`, `ano`, `cor`) VALUES
+(1, 'Toyota', 'AMR2R22', '2024', 'Prata'),
+(2, 'Volkswagen', 'BEE3R56', '2015', 'Branco'),
+(3, 'Chevrolet ', 'RIO2A18', '2014', 'Vermelho'),
+(4, 'Toyota', 'AYT6G76', '2012', 'Rosa'),
+(5, 'Ferrari', 'AYD5H99', '2010', 'Vermelho'),
+(6, 'Lamborghini ', 'OUT7A34', '2024', 'Laranja'),
+(7, 'BYD', 'AQU7T23', '2025', 'Preto'),
+(8, 'GWM', 'SYF5G90', '2004', 'Azul'),
+(9, 'Honda', 'DTR2G56', '2023', 'Branco'),
+(10, 'Nissan', 'WQO2T54', '2024', 'Preto');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `cliente`
+--
+
+CREATE TABLE `cliente` (
+  `id_cliente` int(11) NOT NULL,
+  `nome` varchar(20) DEFAULT NULL,
+  `cpf` int(11) DEFAULT NULL,
+  `telefone` varchar(20) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `endereco` varchar(100) DEFAULT NULL,
+  `data_nascimento` int(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `cliente`
+--
+
+INSERT INTO `cliente` (`id_cliente`, `nome`, `cpf`, `telefone`, `email`, `endereco`, `data_nascimento`) VALUES
+(1, 'Ana Laura', 469498, '15991300891', 'ana.laura@gmail.com', ' Rua Almeida filho', 2003),
+(2, 'Isabel Maria', 453987, '15991875483', 'isabelamaria@gmail.com', 'Rua perdida da tristeza', 1986),
+(3, 'Aline Barros', 457876, '11994756857', 'aline.barros@gmail.com', 'Rua gonsalves pereira', 2009),
+(4, ' Rodolfo adolfo', 478367, '15998744675', 'Rodolfo.adolfo@gmail.com', 'Rua santiago paiva', 2001),
+(5, ' Jonas marcelino', 489289, '119937223874', 'jonasMarcelino@gmail.com', 'Rua palina  ', 1979),
+(6, 'Mariana Santos', 478965, '15991366854', 'mari.santosa@gmail.com', ' Rua Elisangela patada', 2021),
+(7, 'Jocelina Camargo', 478392, '15992648954', 'jocelininha.ta.amargo@gmail.com', 'Rua Fabiolete leiga', 1999),
+(8, 'Samili  Pina', 478378, '11992634586', 'Samili.milperfeiçõess@gmail.com', 'Rua Markley', 2011),
+(9, ' Joana Tamara Costa', 489274, '11998769251', 'casadamãe.joanao@gmail.com', 'Rua benicio oliveira', 2004),
+(10, 'Lucas Filho SIlva', 482475, '15992788539', 'lucas.Silveira@gmail.com', 'Rua yuri alberto  ', 1989);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `reserva`
+--
+
+CREATE TABLE `reserva` (
+  `id_reserva` int(5) NOT NULL,
+  `id_cliente` int(11) DEFAULT NULL,
+  `id_carro` int(11) DEFAULT NULL,
+  `data_reserva` date DEFAULT NULL,
+  `data_devolucao` date DEFAULT NULL,
+  `valor_total` double(10,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `reserva`
+--
+
+INSERT INTO `reserva` (`id_reserva`, `id_cliente`, `id_carro`, `data_reserva`, `data_devolucao`, `valor_total`) VALUES
+(1, 5, 9, '2025-08-10', '2025-10-10', 2.07),
+(2, 4, 7, '2023-06-20', '2023-07-09', 1.70),
+(3, 3, 2, '2022-07-25', '2022-08-10', 1.76),
+(4, 2, 8, '2021-07-31', '2021-09-10', 2.89),
+(5, 1, 6, '2020-03-01', '2025-05-10', 1.89);
+
+--
+-- Índices para tabelas despejadas
+--
+
+--
+-- Índices de tabela `carro`
+--
+ALTER TABLE `carro`
+  ADD PRIMARY KEY (`id_carro`);
+
+--
+-- Índices de tabela `cliente`
+--
+ALTER TABLE `cliente`
+  ADD PRIMARY KEY (`id_cliente`);
+
+--
+-- Índices de tabela `reserva`
+--
+ALTER TABLE `reserva`
+  ADD PRIMARY KEY (`id_reserva`),
+  ADD KEY `id_cliente` (`id_cliente`),
+  ADD KEY `id_carro` (`id_carro`);
+
+--
+-- AUTO_INCREMENT para tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `carro`
+--
+ALTER TABLE `carro`
+  MODIFY `id_carro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT de tabela `cliente`
+--
+ALTER TABLE `cliente`
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT de tabela `reserva`
+--
+ALTER TABLE `reserva`
+  MODIFY `id_reserva` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- Restrições para tabelas despejadas
+--
+
+--
+-- Restrições para tabelas `reserva`
+--
+ALTER TABLE `reserva`
+  ADD CONSTRAINT `reserva_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`),
+  ADD CONSTRAINT `reserva_ibfk_2` FOREIGN KEY (`id_carro`) REFERENCES `carro` (`id_carro`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
