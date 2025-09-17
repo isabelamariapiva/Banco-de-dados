@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dreamy Glow</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+ 
+  <header>
+    <div class="container-header">
+      <img src="logo.png" alt="Dreamy Glow" class="logo">
+      <h1> Dreamy Glow </h1>
+    </div>
+  </header>
+
+  <section class="banner">
+    <img src="banner.png" alt="banner">
+    <h2>Descubra o brilho perfeito para você</h2>
+  </section>
+
+
+  <section class="produtos">
+    <div class="produto">
+      <div class="caixa-redonda">Blush</div>
+    </div>
+    <div class="produto">
+      <div class="caixa-redonda">Rímel</div>
+    </div>
+    <div class="produto">
+      <div class="caixa-redonda">Gloss</div>
+    </div>
+    <div class="produto">
+      <div class="caixa-redonda">Iluminador</div>
+    </div>
+  </section>
+
+ 
+  <footer>
+    <p>📍 Rua Fictícia, 123 | 📞 (15) 99130-0891| ✉️ contato@dreamyglow.com</p>
+    <a href="#">Instagram</a> | <a href="#">Facebook</a> | <a href="#">TikTok</a>
+  </footer>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+Css
+
+
+body {
+  background-color: #d6c2cf;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+header {
+  position: sticky;
+  top: 0;
+  background: linear-gradient(90deg, #ff8fc4, #ff5c9e);
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  z-index: 100;
+}
+
+header h1 {
+  font-family: 'Pacifico', cursive;
+  color: white;
+  font-size: 28px;
+}
+
+header nav a {
+  text-decoration: none;
+  color: white;
+  margin: 0 15px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+header nav a:hover {
+  color: #ffebf0;
+  border-bottom: 2px solid white;
+}
+
+.container-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%; /* deixa redondo */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.banner {
+  position: relative;
+  width: 100%;
+  min-height: 70vh;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.6);
+}
+
+.banner h2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 36px;
+  font-weight: bold;
+  text-shadow: 2px 2px 20px rgba(0,0,0,0.6);
+}
+
+.produtos {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px; 
+  padding: 20px;
+}
+
+.produto .caixa-redonda {
+  width: 130px;
+  height: 130px;
+  background: linear-gradient(135deg, #ff69b4, #ff85c1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  box-shadow: 0 8px 15px rgba(255,105,180,0.5);
+  transition: all 0.3s ease;
+}
+
+.produto .caixa-redonda:hover {
+  transform: scale(1.15) rotate(5deg);
+  box-shadow: 0 12px 20px rgba(255,105,180,0.7);
+}
+
+
+footer {
+  margin-top: 50px;
+  padding: 20px;
+  background-color: #d6adc9;
+  color: rgb(87, 12, 58);
+}
